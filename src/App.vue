@@ -11,8 +11,8 @@
 }
 
   const addNotes = () =>{
-   if(newNote.value.trim.length < 10){
-    error.value = "The note needs minimum 10 character";
+   if(newNote.value.trim().length < 1){
+    error.value = "The note can't be empty";
     return
    }
     notes.value.push({
@@ -31,6 +31,7 @@
     <div v-if="showModal" class="overlay">
       <div class="modal">
         <textarea v-model="newNote" name="note" id="note" cols="30" rows="10"></textarea>
+        <div>{{ newNote.trim().length }}</div>
         <p v-if="error">{{ error }}</p>
           <button @click="addNotes">Add note!</button>
           <button class="close" @click="showModal = false">Close</button>
